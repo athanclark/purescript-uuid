@@ -8,8 +8,11 @@ module Data.UUID
 import Prelude (class Ord, class Eq, class Show, compare, (==), ($), pure, (<<<), (>>=))
 import Control.Monad.Eff (Eff, kind Effect)
 import Data.Maybe (Maybe(Nothing, Just))
+import Data.Generic (class Generic)
 
 newtype UUID = UUID String
+
+derive instance genericUUID :: Generic UUID
 
 -- | The effect of generating a new UUID.
 foreign import data GENUUID :: Effect
